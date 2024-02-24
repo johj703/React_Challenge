@@ -16,7 +16,19 @@ function Home() {
     getHeros();
   }, []);
   console.log(heros);
-  return <div>{loading ? <h1>Loading</h1> : null}</div>;
+  return (
+    <div>
+      {loading ? (
+        <h1>Loading</h1>
+      ) : (
+        <div>
+          {heros.map((hero) => (
+            <div key={hero.id}>{hero.name}</div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default Home;
