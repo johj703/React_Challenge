@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 function Home() {
-  return <div></div>;
+  const [loading, setLoading] = useState(true);
+  return <div>{loading ? <h1>Loading</h1> : null}</div>;
 }
 
 export default Home;
