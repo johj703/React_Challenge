@@ -11,6 +11,7 @@ function Heros({ id, thumbnail, name }) {
 }
 
 Heros.propTypes = {
+  id: PropTypes.number.isRequired,
   thumbnail: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };
