@@ -3,22 +3,24 @@ import { useParams } from "react-router-dom";
 
 function Detail() {
   const [loading, setLoading] = useState(true);
-  const [heros, setHeros] = useState([]);
+  // 객체로 초기화 변경
+  const [heros, setHeros] = useState(null);
   const { id } = useParams();
-  const getHeros = async () => {
+  const getHeros = async (id) => {
     const json = await (
       await fetch(
         `https://marvel-proxy.nomadcoders.workers.dev/v1/public/characters/${id}`
       )
     ).json();
-    setHeros(json.data);
+    setHeros(json.data); // API 응답 구조에 맞게 상태 업데이트
     setLoading(false);
     console.log(json);
   };
   useEffect(() => {
-    getHeros();
-  }, []);
+    getHeros(id);
+  }, [id]);
   console.log(heros);
+
   return (
     <div>
       <h1>Detail</h1>
@@ -26,12 +28,15 @@ function Detail() {
         {loading ? (
           <h1>Loading</h1>
         ) : (
-          <div>
-            <img
-              src={`${heros.results[0].thumbnail.path}.${heros.results[0].thumbnail.extension}`}
-              alt="Thumbnail"
-            />
-          </div>
+          heros &&
+          heros.results.length > 0 && ( // 조건부 렌더링 추가
+            <div>
+              <img
+                src={`${heros.results[0].thumbnail.path}.${heros.results[0].thumbnail.extension}`}
+                alt="Thumbnail"
+              />
+            </div>
+          )
         )}
       </div>
     </div>
