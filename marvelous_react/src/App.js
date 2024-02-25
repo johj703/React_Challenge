@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Heros from "./component/Heros.jsx";
 
 function App() {
   const [loading, setLoading] = useState();
@@ -23,13 +24,11 @@ function App() {
       ) : (
         <div>
           {heros.map((hero) => (
-            <div key={hero.id}>
-              <img
-                src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
-                alt="thumbnail"
-              />
-              <h2>{hero.name}</h2>
-            </div>
+            <Heros
+              key={hero.id}
+              thumbnail={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
+              name={hero.name}
+            />
           ))}
         </div>
       )}
