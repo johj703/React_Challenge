@@ -3,15 +3,16 @@ import { useState, useEffect } from "react";
 function App() {
   const [loading, setLoading] = useState();
   const [heros, setHeros] = useState([]);
-  useEffect(() => {
-    fetch(
+  const getHeros = async () => {
+    const response = await fetch(
       `https://marvel-proxy.nomadcoders.workers.dev/v1/public/characters?limit=50&orderBy=modified&series=24229,1058,2023`
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        setHeros(json.data.results);
-        setLoading(false);
-      });
+    );
+    const json = await response.json();
+    setHeros(json.data.results);
+    setLoading(false);
+  };
+  useEffect(() => {
+    getHeros();
   }, []);
   return <div>{loading ? <h1>Loading</h1> : null}</div>;
 }
