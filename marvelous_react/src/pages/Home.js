@@ -25,6 +25,7 @@ function Home() {
         <div>
           {heros.map((hero) => (
             <Heros
+              id={hero.id}
               key={hero.id}
               thumbnail={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
               name={hero.name}
