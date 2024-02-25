@@ -15,6 +15,7 @@ function App() {
   useEffect(() => {
     getHeros();
   }, []);
+  // const thumbnailPath = `${heros.thumbnail.path}.${heros.thumbnail.extension};`;
   return (
     <div>
       {loading ? (
@@ -22,7 +23,13 @@ function App() {
       ) : (
         <div>
           {heros.map((hero) => (
-            <div key={hero.id}>{hero.name}</div>
+            <div key={hero.id}>
+              <img
+                src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
+                alt="thumbnail"
+              />
+              <h2>{hero.name}</h2>
+            </div>
           ))}
         </div>
       )}
