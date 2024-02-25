@@ -1,4 +1,4 @@
-function Heros() {
+function Heros({ thumbnail, name }) {
   return (
     <div>
       <img src={`${thumbnail.path}.${thumbnail.extension}`} alt="thumbnail" />
