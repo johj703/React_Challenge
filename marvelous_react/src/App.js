@@ -1,7 +1,8 @@
-import "./App.css";
+import { useState } from "react";
 
 function App() {
-  return <div></div>;
+  const [loading, setLoading] = useState();
+  return <div>{loading ? <h1>Loading</h1> : null}</div>;
 }
 
 export default App;
