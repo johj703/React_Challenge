@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function Heros({ id, thumbnail, name }) {
   return (
     <div>
@@ -6,5 +8,10 @@ function Heros({ id, thumbnail, name }) {
     </div>
   );
 }
+
+Heros.propTypes = {
+  thumbnail: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
 export default Heros;
