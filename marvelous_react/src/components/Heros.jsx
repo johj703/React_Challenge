@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-function Heros({ id, thumbnail, name }) {
+function Heroes({ id, thumbnail, name }) {
   return (
     <div>
       <img src={thumbnail} alt="Heros thumbnail" />
@@ -10,10 +10,10 @@ function Heros({ id, thumbnail, name }) {
   );
 }
 
-Heros.propTypes = {
+Heroes.propTypes = {
   id: PropTypes.number.isRequired,
   thumbnail: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
 };
 
-export default Heros;
+export default Heroes;
