@@ -1,30 +1,30 @@
-import Heros from "../components/Heros";
+import Heroes from "../components/Heroes";
 import { useState, useEffect } from "react";
 
 function Home() {
   const [loading, setLoading] = useState();
-  const [heros, setHeros] = useState([]);
-  const getHeros = async () => {
+  const [heroes, setHeroes] = useState([]);
+  const getHeroes = async () => {
     const json = await (
       await fetch(
         `https://marvel-proxy.nomadcoders.workers.dev/v1/public/characters?limit=50&orderBy=modified&series=24229,1058,2023`
       )
     ).json();
-    setHeros(json.data.results);
+    setHeroes(json.data.results);
     setLoading(false);
   };
   useEffect(() => {
-    getHeros();
+    getHeroes();
   }, []);
-  // const thumbnailPath = `${heros.thumbnail.path}.${heros.thumbnail.extension};`;
+  // const thumbnailPath = `${heroes.thumbnail.path}.${heroes.thumbnail.extension};`;
   return (
     <div>
       {loading ? (
         <h1>Loading</h1>
       ) : (
         <div>
-          {heros.map((hero) => (
-            <Heros
+          {heroes.map((hero) => (
+            <Heroes
               id={hero.id}
               key={hero.id}
               thumbnail={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
