@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 function Heroes({ id, thumbnail, name }) {
   return (
     <div>
-      <img src={thumbnail} alt="Heros thumbnail" />
-      <Link to={`/heros/${id}`}>{name}</Link>
+      <img src={thumbnail} alt="Heroes thumbnail" />
+      <Link to={`/heroes/${id}`}>{name}</Link>
     </div>
   );
 }
