@@ -3,20 +3,20 @@ import { useState, useEffect } from "react";
 
 function Home() {
   const [loading, setLoading] = useState();
-  const [heroes, setHeros] = useState([]);
+  const [heroes, setHeroes] = useState([]);
   const getHeroes = async () => {
     const json = await (
       await fetch(
         `https://marvel-proxy.nomadcoders.workers.dev/v1/public/characters?limit=50&orderBy=modified&series=24229,1058,2023`
       )
     ).json();
-    setHeros(json.data.results);
+    setHeroes(json.data.results);
     setLoading(false);
   };
   useEffect(() => {
     getHeroes();
   }, []);
-  // const thumbnailPath = `${heros.thumbnail.path}.${heros.thumbnail.extension};`;
+  // const thumbnailPath = `${heroes.thumbnail.path}.${heroes.thumbnail.extension};`;
   return (
     <div>
       {loading ? (
