@@ -46,3 +46,10 @@ const findIndex: IFind = (arr: any, item) => {
     return null;
   }
 };
+
+// 6번 slice(arr, startIndex, endIndex)
+type Slice = {
+  <T>(arr: T[], startIndex: number, endIndex?: number): T;
+};
+
+const slice: Slice = (arr: any, start, end?) => arr.slice(start, end);
