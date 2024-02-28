@@ -19,3 +19,14 @@ const prepend: Prepend = (arr, item) => [item, ...arr];
 function mix<T>(item: T[], item2: T[]) {
   return [...item, ...item2];
 }
+
+// 4번 count(arr)
+interface Count {
+  <T>(arr: T[]): T;
+}
+
+const count: Count = (arr: any) => arr.length;
+
+function count2<T>(arr: T[]) {
+  return arr.length;
+}
