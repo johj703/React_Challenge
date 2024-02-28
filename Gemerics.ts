@@ -30,3 +30,19 @@ const count: Count = (arr: any) => arr.length;
 function count2<T>(arr: T[]) {
   return arr.length;
 }
+
+// 5번 findIndex(arr, item)
+interface IFind {
+  <T>(arr: T[], item: T);
+}
+
+const findIndex: IFind = (arr: any, item) => {
+  let answer = arr.indexOf(item);
+  if (answer) {
+    return answer;
+  } else if (answer === 0) {
+    return 0;
+  } else {
+    return null;
+  }
+};
