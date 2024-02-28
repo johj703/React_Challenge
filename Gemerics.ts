@@ -14,3 +14,8 @@ interface Prepend {
 }
 
 const prepend: Prepend = (arr, item) => [item, ...arr];
+
+// 3번 mix(arr, arr)
+function mix<T>(item: T[], item2: T[]) {
+  return [...item, ...item2];
+}
