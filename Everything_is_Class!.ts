@@ -1,24 +1,29 @@
 // LocalStorage API
-interface StorageI<T> {
-  [key: string]: T;
-}
-interface ClearItemI<C> {
-  clearItem(): void;
-}
+abstract class LocalStorage<T> {
+  // 데이터 저장
+  setItem(key: string, value: T): void {
+    const jsonData = JSON.stringify(value);
+    localStorage.setItem(key, jsonData);
+  }
 
-class LocalStorage<T> {
-  private storage: StorageI<T> = {};
-  setItem(key: string, value: T) {
-    this.storage[key] = value;
+  // 데이터 불러오기
+  getItem(key: string): T | null {
+    const jsonData = localStorage.getItem(key);
+    if(jsonData) {
+      return JSON.parse(jsonData);
+    }
+    return null
   }
-  getItem(key: string): T {
-    return this.storage[key];
+
+  // 특정 키의 데이터 삭제
+  clearItem(key: string): void {
+    localStorage.removeItem(key);
   }
-  clearItem(key: T): void {
-    this.storage.removeItem(this.getOriginKey(key));
-  }
-  clear() {
-    this.storage = {};
+
+  // 모든 데이터 삭제
+  clear(): void {
+    // 로컬 스토리지의 모든 아이템 삭제
+    localStorage.clear();
   }
 }
 
