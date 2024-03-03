@@ -9,10 +9,10 @@ abstract class LocalStorage<T> {
   // 데이터 불러오기
   getItem(key: string): T | null {
     const jsonData = localStorage.getItem(key);
-    if(jsonData) {
+    if (jsonData) {
       return JSON.parse(jsonData);
     }
-    return null
+    return null;
   }
 
   // 특정 키의 데이터 삭제
@@ -28,49 +28,59 @@ abstract class LocalStorage<T> {
 }
 
 // Geolocation API
-interface Position {
+// 위치 정보를 담는 타입 정의
+type Position = {
   coords: {
     latitude: number;
     longitude: number;
   };
   timestamp: number;
-}
+};
 
-interface PositionError {
+// 위치 정보 오류를 담는 타입 정의
+type PositionError = {
   code: number;
   message: string;
-}
+};
 
+// watchPosition 메서드에 사용되는 콜백 타입 정의
 type WatchPositionCallback = (position: Position) => void;
 
+// Geolocation 인터페이스 정의
 interface Geolocation {
+  // 현재 위치 정보를 얻어오는 메서드
   getCurrentPosition(
     successCallback: (position: Position) => void,
     errorCallback?: (error: PositionError) => void,
-    option?: PositionOptions
+    options?: PositionOptions
   ): void;
 
+  // 위치 정보를 실시간으로 감시하는 메서드
   watchPosition(
     successCallback: WatchPositionCallback,
     errorCallback?: (error: PositionError) => void,
-    option?: PositionOptions
+    options?: PositionOptions
   ): number;
 
+  // 위치 감시를 중지하는 메서드
   clearWatch(watchId: number): void;
 }
 
+// Geolocation 인터페이스를 구현하는 클래스 작성
 class CustomGeolocation implements Geolocation {
   private watchId: number | null = null;
 
+  // 현재 위치 정보를 얻어오는 메서드
   getCurrentPosition(
     successCallback: (position: Position) => void,
     errorCallback?: (error: PositionError) => void,
     options?: PositionOptions
   ): void {
+    // 브라우저가 Geolocation API를 지원하는지 확인
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
-        successCallback,
-        errorCallback,
+        (position) => successCallback(position),
+        (error) => errorCallback?.(error),
         options
       );
     } else {
@@ -78,6 +88,7 @@ class CustomGeolocation implements Geolocation {
     }
   }
 
+  // 위치 정보를 실시간으로 감시하는 메서드 작성
   watchPosition(
     successCallback: WatchPositionCallback,
     errorCallback?: (error: PositionError) => void,
@@ -85,8 +96,8 @@ class CustomGeolocation implements Geolocation {
   ): number {
     if (navigator.geolocation) {
       const id = navigator.geolocation.watchPosition(
-        successCallback,
-        errorCallback,
+        (position) => successCallback(position),
+        (error) => errorCallback?.(error),
         options
       );
       this.watchId = id;
@@ -97,6 +108,7 @@ class CustomGeolocation implements Geolocation {
     }
   }
 
+  // 위치 감시를 중지하는 메서드 구현
   clearWatch(watchId: number): void {
     if (navigator.geolocation) {
       navigator.geolocation.clearWatch(watchId);
