@@ -1,7 +1,12 @@
 import { BrowserRouter } from "react-router-dom";
+import Header from "./components/Header";
 
 function Router() {
-  return <BrowserRouter></BrowserRouter>;
+  return (
+    <BrowserRouter>
+      <Header />
+    </BrowserRouter>
+  );
 }
 
 export default Router;
