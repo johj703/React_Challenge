@@ -1,4 +1,4 @@
-export const Authors = [
+export const Database = [
   {
     id: 1,
     name: "J.K.Rowling",
