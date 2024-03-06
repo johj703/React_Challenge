@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { Database } from "../../db";
 
-function Author() {
+function Authors() {
   const { name } = useParams();
   const writer = Database.find((writer) => writer.name === name);
   if (!writer) {
@@ -20,4 +20,4 @@ function Author() {
     </div>
   );
 }
-export default Author;
+export default Authors;
