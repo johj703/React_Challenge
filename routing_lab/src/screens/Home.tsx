@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Authors } from "../db";
 
 function Home() {
@@ -6,7 +7,9 @@ function Home() {
       <h1>Best Seller Authors</h1>
       <ul>
         {Authors.map((Authors) => (
-          <li key={Authors.id}>{Authors.name}</li>
+          <li key={Authors.id}>
+            <Link to={`/Authors/${Authors.id}`}>{Authors.name}</Link>
+          </li>
         ))}
       </ul>
     </>
