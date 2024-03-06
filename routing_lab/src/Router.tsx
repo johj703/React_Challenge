@@ -19,7 +19,7 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "Authors/:authorId",
+        path: "Authors/:name",
         element: <Author />,
       },
     ],
