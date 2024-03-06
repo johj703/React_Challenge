@@ -13,7 +13,7 @@ function Author() {
       <ul>
         {writer.books?.map((book) => (
           <li key={book.id}>
-            <Link to={`writer/${name}/${book.id}`}>{book.title}</Link>
+            <Link to={`Authors/${name}/${book.id}`}>{book.title}</Link>
           </li>
         ))}
       </ul>
