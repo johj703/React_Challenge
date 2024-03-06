@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Home from "./screens/Home";
 import About from "./screens/About";
 import Root from "./Root";
+import Author from "./screens/authors/Author";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
+      },
+      {
+        path: "Authors/:authorId",
+        element: <Author />,
       },
     ],
   },
