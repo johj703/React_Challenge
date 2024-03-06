@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Database } from "../../db";
 
 function Author() {
@@ -10,6 +10,13 @@ function Author() {
   return (
     <div>
       <h1>{writer.name}</h1>
+      <ul>
+        {writer.books?.map((book) => (
+          <li key={book.id}>
+            <Link to={`writer/${name}/${book.id}`}>{book.title}</Link>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
