@@ -21,7 +21,7 @@ const router = createBrowserRouter([
         element: <About />,
       },
       {
-        path: "Authors/:name",
+        path: "author/:name",
         element: <Author />,
         children: [
           {
