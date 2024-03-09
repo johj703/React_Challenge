@@ -9,7 +9,7 @@ function Router() {
         <Route path="/">
           <Home />
         </Route>
-        <Route path="/Detail">
+        <Route path="/detail">
           <Detail />
         </Route>
       </Switch>
