@@ -9,7 +9,7 @@ function Router() {
         <Route path="/">
           <Home />
         </Route>
-        <Route path="/detail">
+        <Route path="/character/:id">
           <Detail />
         </Route>
       </Switch>
