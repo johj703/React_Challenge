@@ -1,4 +1,4 @@
-import { useQuery } from "react-query" 
+import { useQuery } from "@tanstack/react-query" 
 import styled from "styled-components";
 import { fetchCharacters } from "../api";
 import { Link } from "react-router-dom";
@@ -58,12 +58,12 @@ interface ICharacter {
 }
 
 function Home() {
-    const { isLoading, data } = useQuery<ICharacter[]>("allCharacters", fetchCharacters);
+    const { isLoading, data } = useQuery<ICharacter[]>({queryKey: ["allCharacters"], queryFn: fetchCharacters()});
     console.log(data);
     return(
         <Container>
             <Header>
-                <Title>Home</Title>
+                <Title>Disney Characters!</Title>
             </Header>
             {isLoading ? (<Loader>Loading!!!</Loader>) : (
                 <CharacterList>
@@ -71,7 +71,7 @@ function Home() {
                         <Character>
                             <Link 
                                 to={{
-                                    pathname: `/${characters.id}`,
+                                    pathname: `/characters/${characters.id}`,
                                     state: { name: characters.name},
                             }}>
                                 <Img
