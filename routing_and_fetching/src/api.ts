@@ -5,5 +5,5 @@ export function fetchCharacters() {
 }
 
 export function fetchCharactersInfo(characterId: string) {
-    return fetch(`${BASE_URL}/characters/${characterId}`).then((response) => response.json());
+    return fetch(`${BASE_URL}/${characterId}`).then((response) => response.json());
 }
